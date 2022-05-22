@@ -13,10 +13,10 @@ import Link from 'next/link';
 const Sidebar = () => {
     const styles = {
         container: `h-full w-[300px] flex flex-col bg-[#fff] static`,
-        profile: ` w-full py-16 flex flex-col justify-center items-center rounded-r-3xl bg-gradient-to-t from-[#0d141c] to-[#42667e] mt-[40px] mb-[50px] border-2 border-[#fb9701]`,
+        profile: `w-full py-16 flex flex-col justify-center items-center rounded-r-3xl bg-gradient-to-t from-[#0d141c] to-[#42667e] mt-[40px] mb-[50px] border-2 border-[#fb9701]`,
         profilePicContainer: `flex  rounded-xl items-center justify-center w-full h-full mb-5`,
         profilePic: `rounded-3xl object-cover`,
-        welcome: ` text-md mb-2 font-bold text-2xl text-white`,
+        welcome: `text-md mb-2 font-bold text-2xl text-white`,
         walletAddress: `text-xl flex w-full justify-center font-extrabold mb-4`,
         menu: `flex flex-col w-full h-full px-10 gap-10`,
         menuItem: `flex items-center text-lg font-bold cursor-pointer gap-2`,
