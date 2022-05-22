@@ -4,7 +4,8 @@ import { BsFillBookmarkFill } from 'react-icons/bs'
 import { BsFillPersonFill } from 'react-icons/bs'
 import logo from '../../assets/nft.png'
 import logoFull from '../../assets/nft.png'
-import React from 'react';
+import React, { useContext } from 'react';
+import { NFTContext } from '../../context/NFTContext';
 import { ConnectButton } from 'web3uikit';
 import { AiOutlineHistory } from 'react-icons/ai'
 import Link from 'next/link';
@@ -26,17 +27,13 @@ const Sidebar = () => {
         setNickname: `text-lg font-bold flex flex-1 items-center mt-[20px] mb-[20px] text-white`,
     }
 
-    // const {
-    //     isAuthenticated,
-    //     buyTokens,
-    //     getBalance,
-    //     nickname,
-    //     setNickname,
-    //     username,
-    //     handleSetUsername,
-    // } = useContext(AmazonContext)
-    const isAuthenticated = true;
-    const username = 'Tiffany';
+    const {
+        isAuthenticated,
+        nickname,
+        setNickname,
+        username,
+        handleSetUsername,
+    } = useContext(NFTContext);
 
   return (
     <div className={styles.container}>
