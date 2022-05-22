@@ -1,3 +1,127 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": [
+    "prettier",
+    "prettier/react",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["src/config/*"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": ["craco.config.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0
+      }
+    },
+    {
+      "files": ["db/*/*"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "prefer-arrow", "@typescript-eslint", "import", "prettier"],
+  "root": true,
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "*.scss",
+            "group": "index",
+            "patternOptions": { "matchBase": true },
+            "position": "after"
+          }
+        ]
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": [2, {"vars": "all","args": "all", "varsIgnorePattern": "^_*", "argsIgnorePattern": "^_*"}],
+    "@typescript-eslint/no-use-before-define": 0,
+    "arrow-body-style": ["error", "as-needed"],
+    "default-case": "error",
+    "eol-last": "error",
+    "eqeqeq": ["error", "always"],
+    "explicit-function-return-type": 0,
+    "max-lines": ["error", 600],
+    "no-empty": "error",
+    "no-extra-semi": "error",
+    "no-multiple-empty-lines": "error",
+    "no-return-await": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true
+      }
+    ],
+    "no-unused-vars": "off",
+    "no-use-before-define": 0,
+    "no-useless-constructor": 2,
+    "no-void": "error",
+    "object-curly-spacing": ["error", "always"],
+    "prefer-arrow-callback": "error",
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "classPropertiesAllowed": true,
+        "disallowPrototype": true,
+        "singleReturnOnly": true
+      }
+    ],
+    "prettier/prettier": "error",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
+    "react/display-name": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/prop-types": "off",
+    "require-await": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "named": "never"
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "import/internal-regex": "^(actions|api|assets|config|consts|i18n|reducers|routes|stylesheets|ui|utils|store)"
+  }
 }
