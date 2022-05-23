@@ -5,9 +5,18 @@ import { useMoralis, useMoralisQuery } from 'react-moralis';
 export const NFTContext = createContext();
 
 export const NFTProvider = ({ children }) => {
-    const [username, setUsername] = useState('');
+    const [currentAccount, setCurrentAccount] = useState('');
+    const [formattedAccount, setFormattedAccount] = useState('');
+    const [balance, setBalance] = useState('');
+    const [tokenAmount, setTokenAmount] = useState('');
+    const [amountDue, setAmountDue] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [etherscanLink, setEtherscanLink] = useState('');
     const [nickname, setNickname] = useState('');
-    const [assets, setAssets] =useState([]);
+    const [username, setUsername] = useState('');
+    const [assets, setAssets] = useState([]);
+    const [recentTransactions, setRecentTransactions] = useState([]);
+    const [ownedItems, setOwnedItems] = useState([]);
 
     const {
         authenticate,
@@ -21,7 +30,7 @@ export const NFTProvider = ({ children }) => {
     const {
         data: assetsData,
         error: assetsDataError,
-        isLoading: userDataisLoading,
+        isLoading: userDataIsLoading,
     } = useMoralisQuery('assets');
 
     useEffect(() => {
@@ -39,7 +48,7 @@ export const NFTProvider = ({ children }) => {
                 await getAssets();
             }
         })()
-    }, [isWeb3Enabled, assetsData, assetsDataisLoading]);
+    }, [isWeb3Enabled, assetsData, userDataIsLoading]);
 
     const handleSetUsername = () => {
         if (user) {
@@ -65,7 +74,31 @@ export const NFTProvider = ({ children }) => {
     };
 
     return (
-        <NFTContext.Provider value = {{isAuthenticated, nickname, setNickname, username, setUsername}}>
+        <NFTContext.Provider value={{
+            formattedAccount,
+            isAuthenticated,
+            buyTokens,
+            getBalance,
+            balance,
+            setTokenAmount,
+            tokenAmount,
+            amountDue,
+            setAmountDue,
+            isLoading,
+            setIsLoading,
+            setEtherscanLink,
+            etherscanLink,
+            buyAsset,
+            currentAccount,
+            nickname,
+            setNickname,
+            username,
+            setUsername,
+            handleSetUsername,
+            assets,
+            recentTransactions,
+            ownedItems,
+          }}>
             {children}
         </NFTContext.Provider>
     )
